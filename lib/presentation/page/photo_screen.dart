@@ -71,35 +71,37 @@ class _PhotoScreenState extends State<PhotoScreen> {
             ),
             SizedBox(
               height: 40,
-              child: Row(
-                children: [
-                  RadioMenuButton(
-                    groupValue: viewModel.state.sortCategory,
-                    value: SortCategory.newest,
-                    onChanged: (value) {
-                      viewModel.changeSortCategory(value);
-                      setState(() {
-                      });
-                    },
-                    child: Text(SortCategory.newest.value),
-                  ),
-                  RadioMenuButton(
-                    groupValue: viewModel.state.sortCategory,
-                    value: SortCategory.oldest,
-                    onChanged: (value) {
-                      viewModel.changeSortCategory(value);
-                    },
-                    child: Text(SortCategory.oldest.value),
-                  ),
-                  RadioMenuButton(
-                    groupValue: viewModel.state.sortCategory,
-                    value: SortCategory.popularity,
-                    onChanged: (value) {
-                      viewModel.changeSortCategory(value);
-                    },
-                    child: Text(SortCategory.popularity.value),
-                  ),
-                ],
+              child: Consumer<PhotoScreenViewModel>(
+                builder: (context, viewModel, child) {
+                  return Row(
+                    children: [
+                      RadioMenuButton(
+                        groupValue: viewModel.state.sortCategory,
+                        value: SortCategory.newest,
+                        onChanged: (value) {
+                          viewModel.changeSortCategory(SortCategory.newest);
+                        },
+                        child: Text(SortCategory.newest.value),
+                      ),
+                      RadioMenuButton(
+                        groupValue: viewModel.state.sortCategory,
+                        value: SortCategory.oldest,
+                        onChanged: (value) {
+                          viewModel.changeSortCategory(SortCategory.oldest);
+                        },
+                        child: Text(SortCategory.oldest.value),
+                      ),
+                      RadioMenuButton(
+                        groupValue: viewModel.state.sortCategory,
+                        value: SortCategory.popularity,
+                        onChanged: (value) {
+                          viewModel.changeSortCategory(SortCategory.popularity);
+                        },
+                        child: Text(SortCategory.popularity.value),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
             Expanded(
