@@ -12,11 +12,17 @@ class PhotoScreenViewModel with ChangeNotifier {
 
   PhotoScreenState get state => _state;
 
+  Future<void> changeSortCategory(SortCategory sortCategory) async {
+    _state = _state.copyWith(
+      sortCategory: sortCategory,
+    );
+    await search();
+  }
+
   Future<void> search({
     String? keyword,
-    SortCategory? sortCategory,
   }) async {
-    _isLoadingTrue(keyword: keyword, sortCategory: sortCategory);
+    _isLoadingTrue(keyword: keyword);
 
     final photos = await _getPhotoUseCase.execute(
       _state.keyword,
@@ -31,12 +37,10 @@ class PhotoScreenViewModel with ChangeNotifier {
 
   Future<void> _isLoadingTrue({
     String? keyword,
-    SortCategory? sortCategory,
   }) async {
     _state = _state.copyWith(
       isLoading: true,
       keyword: keyword,
-      sortCategory: sortCategory,
     );
     notifyListeners();
   }
