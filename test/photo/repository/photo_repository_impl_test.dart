@@ -1,13 +1,9 @@
-import 'dart:convert';
-
-import 'package:flutter_image_search_app/data/data_source/photo_api_impl.dart';
 import 'package:flutter_image_search_app/data/dto/photo_result_dto.dart';
 import 'package:flutter_image_search_app/data/repository/photo_repository_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:http/http.dart' as http;
 
-import '../mock/data_source/mock_photo_api.dart';
+import '../mock/data/data_source/mock_photo_api.dart';
 
 void main() {
   group('PhotoRepositoryImpl 클래스', () {
