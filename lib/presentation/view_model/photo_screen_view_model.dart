@@ -16,14 +16,13 @@ class PhotoScreenViewModel with ChangeNotifier {
     _state = _state.copyWith(
       sortCategory: sortCategory,
     );
-    await search();
+    search();
   }
 
   Future<void> search({
     String? keyword,
   }) async {
     _isLoadingTrue(keyword: keyword);
-
     final photos = await _getPhotoUseCase.execute(
       _state.keyword,
       sortCategory: _state.sortCategory,
