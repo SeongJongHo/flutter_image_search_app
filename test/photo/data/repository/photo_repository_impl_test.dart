@@ -3,7 +3,8 @@ import 'package:flutter_image_search_app/data/repository/photo_repository_impl.d
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../mock/data/data_source/mock_photo_api.dart';
+import '../../mock/data/data_source/mock_photo_api.dart';
+
 
 void main() {
   group('PhotoRepositoryImpl 클래스', () {
